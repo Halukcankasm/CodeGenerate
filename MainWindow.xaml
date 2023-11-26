@@ -1,0 +1,47 @@
+﻿<Window x:Class="CodeGenerate.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CodeGenerate"
+        mc:Ignorable="d"
+        Title="MainWindow" 
+        x:Name="Codebehind"
+        Width="170"
+        Height="250"
+        DataContext="{Binding ElementName=Codebehind}">
+    <Grid Width="160">
+        <StackPanel Orientation="Vertical">
+            <ComboBox HorizontalAlignment="Left" Margin="20"  Width="120" 
+                  ItemsSource="{Binding ElementName=Codebehind, Path=DatabaseNames }" 
+                  SelectedItem="{Binding SimpleStringProperty, Mode=TwoWay}" 
+                  IsEditable="True"
+                  IsReadOnly="True"
+                  Text="Select Database"
+                  SelectionChanged="dbComboBox_SelectionChanged"/>
+
+            <ComboBox HorizontalAlignment="Left" Margin="20"  Width="120"
+                  ItemsSource="{Binding ElementName=Codebehind, Path=ShemasNames, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged }" 
+                  SelectedItem="{Binding SimpleStringProperty, Mode=TwoWay}" 
+                  IsEditable="True"
+                  IsReadOnly="True"
+                  Text="Select Shema"
+                  SelectionChanged="SHComboBox_SelectionChanged"/>
+
+            <ComboBox HorizontalAlignment="Left" Margin="20"  Width="120"
+                  ItemsSource="{Binding ElementName=Codebehind, Path=TableNames, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged }" 
+                  SelectedItem="{Binding SimpleStringProperty, Mode=TwoWay}" 
+                  IsEditable="True"
+                  IsReadOnly="True"
+                  Text="Select Table"
+                  SelectionChanged="TBComboBox_SelectionChanged"/>
+
+
+            <Button  Click="Button_Click">
+                CodeGenerate
+            </Button>
+        </StackPanel>
+
+
+    </Grid>
+</Window>
